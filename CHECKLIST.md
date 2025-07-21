@@ -14,6 +14,7 @@
 - [x] Status indication (serial output stub present)
 - [x] LED status indication
 - [x] Serial console for debugging (basic printf, not interactive yet)
+- [x] Code is beginner-friendly, well-commented, and easy to extend
 
 ## 4. System Architecture
 - [x] Main app structure in place (`app_main.c`)
@@ -21,6 +22,7 @@
 - [x] Connection event handling and tracking
 - [x] Mesh message publish/subscribe logic
 - [x] SPP/BLE UART data handling
+- [x] Clear extension points and comments for user logic
 
 ## 5. Tasks Breakdown
 ### A. Bluetooth Mesh Mode
@@ -48,6 +50,7 @@
 
 ### E. Example Usage
 - [x] README with setup and usage instructions
+- [x] Beginner-friendly usage instructions in README
 - [x] Example scripts for connecting/sending data
 - [x] Troubleshooting section
 
