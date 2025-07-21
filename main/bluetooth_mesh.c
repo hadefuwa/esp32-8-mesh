@@ -36,7 +36,7 @@ static esp_ble_mesh_comp_t composition = {
     .element_count = ARRAY_SIZE(elements),
 };
 
-// Event handler for provisioning and config
+// Event handler for provisioning and configuration events
 static void ble_mesh_prov_cb(esp_ble_mesh_prov_cb_event_t event, esp_ble_mesh_prov_cb_param_t *param) {
     switch (event) {
         case ESP_BLE_MESH_PROV_REGISTER_COMP_EVT:
@@ -54,7 +54,7 @@ static void ble_mesh_prov_cb(esp_ble_mesh_prov_cb_event_t event, esp_ble_mesh_pr
     }
 }
 
-// Event handler for mesh messages
+// Event handler for mesh model messages
 static void ble_mesh_model_cb(esp_ble_mesh_model_cb_event_t event, esp_ble_mesh_model_cb_param_t *param) {
     if (event == ESP_BLE_MESH_MODEL_OPERATION_EVT) {
         ESP_LOGI(TAG, "Received mesh message, opcode: 0x%04x", param->model_operation.opcode);
