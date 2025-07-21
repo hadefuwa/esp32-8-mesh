@@ -3,6 +3,7 @@
 #include "freertos/task.h"
 #include "nvs_flash.h"
 #include "esp_log.h"
+#include "bluetooth_mesh.h"
 
 // Mode selection: define BLUETOOTH_MODE_MESH or BLUETOOTH_MODE_SPP
 #define BLUETOOTH_MODE_MESH 0
@@ -11,7 +12,6 @@
 #define BLUETOOTH_MODE BLUETOOTH_MODE_MESH // Change to BLUETOOTH_MODE_SPP for SPP mode
 #endif
 
-void bluetooth_mesh_init(void);
 void bluetooth_spp_init(void);
 
 void app_main(void) {
@@ -29,7 +29,10 @@ void app_main(void) {
 
     // Initialize Bluetooth based on mode
     if (BLUETOOTH_MODE == BLUETOOTH_MODE_MESH) {
-        bluetooth_mesh_init();
+        ret = bluetooth_mesh_init();
+        if (ret != ESP_OK) {
+            printf("BLE Mesh init failed!\n");
+        }
     } else {
         bluetooth_spp_init();
     }
