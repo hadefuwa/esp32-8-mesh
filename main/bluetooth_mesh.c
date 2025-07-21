@@ -1,3 +1,10 @@
+/*
+ * BLE Mesh Node Implementation (Generic OnOff Server)
+ *
+ * This file initializes the ESP32 as a BLE Mesh node using ESP-IDF.
+ * Extend the event handlers below to add your own mesh logic (e.g., control GPIOs, relay messages).
+ */
+
 #include "bluetooth_mesh.h"
 #include <stdio.h>
 #include <string.h>
@@ -44,6 +51,7 @@ static void ble_mesh_prov_cb(esp_ble_mesh_prov_cb_event_t event, esp_ble_mesh_pr
             break;
         case ESP_BLE_MESH_NODE_PROV_COMPLETE_EVT:
             ESP_LOGI(TAG, "Provisioning complete! NetIdx: 0x%04x, Addr: 0x%04x", param->node_prov_complete.net_idx, param->node_prov_complete.addr);
+            // TODO: Add your logic here for when provisioning is complete (e.g., start application logic)
             break;
         case ESP_BLE_MESH_NODE_PROV_RESET_EVT:
             ESP_LOGI(TAG, "Node reset");
@@ -58,7 +66,7 @@ static void ble_mesh_prov_cb(esp_ble_mesh_prov_cb_event_t event, esp_ble_mesh_pr
 static void ble_mesh_model_cb(esp_ble_mesh_model_cb_event_t event, esp_ble_mesh_model_cb_param_t *param) {
     if (event == ESP_BLE_MESH_MODEL_OPERATION_EVT) {
         ESP_LOGI(TAG, "Received mesh message, opcode: 0x%04x", param->model_operation.opcode);
-        // Add more message handling here
+        // TODO: Add your message handling here (e.g., toggle GPIO, respond to mesh commands)
     }
 }
 
